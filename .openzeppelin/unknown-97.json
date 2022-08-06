@@ -1,0 +1,483 @@
+{
+  "manifestVersion": "3.2",
+  "admin": {
+    "address": "0x2b52f95EB52b61ee01727fbcE142026bdBCB4E83",
+    "txHash": "0x1f339fc0dc1b76ab4150b40be50156ced69c5f3852cc9581c9a4055e9b134203"
+  },
+  "proxies": [
+    {
+      "address": "0x8BFa5cB0B3aEb5Ee95550cee469773d194c18859",
+      "txHash": "0x7129dd05d2f40b6cda187191d0490dc3e0ab6532971d3078043644bb9601bf6e",
+      "kind": "transparent"
+    },
+    {
+      "address": "0x4C2343894Ee979A046A12E28eC5834A73335DAA1",
+      "txHash": "0x0babaeaf6f6de98c12d6bd90adbd71b7e74ae46b04c13c5f59f256a5643cd3ad",
+      "kind": "transparent"
+    }
+  ],
+  "impls": {
+    "37c1b66c6c5f408b271df6e129d64e2790d1b145514b98b68c43daa060ff266f": {
+      "address": "0x929022E04Ee93d571027b44ce855fcD9cA29B092",
+      "txHash": "0xa211b4675798f31e3e4f27d31d3b4c3fb92b953e9f5ec3c7951397483e0eba63",
+      "layout": {
+        "storage": [
+          {
+            "label": "_initialized",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_uint8",
+            "contract": "Initializable",
+            "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:62",
+            "retypedFrom": "bool"
+          },
+          {
+            "label": "_initializing",
+            "offset": 1,
+            "slot": "0",
+            "type": "t_bool",
+            "contract": "Initializable",
+            "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:67"
+          },
+          {
+            "label": "__gap",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_array(t_uint256)50_storage",
+            "contract": "ContextUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/utils/ContextUpgradeable.sol:36"
+          },
+          {
+            "label": "_owner",
+            "offset": 0,
+            "slot": "51",
+            "type": "t_address",
+            "contract": "OwnableUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol:22"
+          },
+          {
+            "label": "__gap",
+            "offset": 0,
+            "slot": "52",
+            "type": "t_array(t_uint256)49_storage",
+            "contract": "OwnableUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol:94"
+          },
+          {
+            "label": "token",
+            "offset": 0,
+            "slot": "101",
+            "type": "t_contract(IERC20)1231",
+            "contract": "Presale",
+            "src": "contracts/Presale.sol:12"
+          },
+          {
+            "label": "BUSD",
+            "offset": 0,
+            "slot": "102",
+            "type": "t_contract(IERC20)1231",
+            "contract": "Presale",
+            "src": "contracts/Presale.sol:18"
+          },
+          {
+            "label": "enabled",
+            "offset": 20,
+            "slot": "102",
+            "type": "t_bool",
+            "contract": "Presale",
+            "src": "contracts/Presale.sol:20"
+          },
+          {
+            "label": "presalePrice",
+            "offset": 0,
+            "slot": "103",
+            "type": "t_uint256",
+            "contract": "Presale",
+            "src": "contracts/Presale.sol:21"
+          },
+          {
+            "label": "maxRaisedBUSD",
+            "offset": 0,
+            "slot": "104",
+            "type": "t_uint256",
+            "contract": "Presale",
+            "src": "contracts/Presale.sol:22"
+          },
+          {
+            "label": "claimEnabled",
+            "offset": 0,
+            "slot": "105",
+            "type": "t_bool",
+            "contract": "Presale",
+            "src": "contracts/Presale.sol:23"
+          },
+          {
+            "label": "minBUSDBoughtPerWallet",
+            "offset": 0,
+            "slot": "106",
+            "type": "t_uint256",
+            "contract": "Presale",
+            "src": "contracts/Presale.sol:25"
+          },
+          {
+            "label": "addressToUserData",
+            "offset": 0,
+            "slot": "107",
+            "type": "t_mapping(t_address,t_struct(UserData)1720_storage)",
+            "contract": "Presale",
+            "src": "contracts/Presale.sol:33"
+          },
+          {
+            "label": "users",
+            "offset": 0,
+            "slot": "108",
+            "type": "t_array(t_address)dyn_storage",
+            "contract": "Presale",
+            "src": "contracts/Presale.sol:35"
+          },
+          {
+            "label": "referralBonusPercent",
+            "offset": 0,
+            "slot": "109",
+            "type": "t_uint256",
+            "contract": "Presale",
+            "src": "contracts/Presale.sol:37"
+          },
+          {
+            "label": "totalRewardTracking",
+            "offset": 0,
+            "slot": "110",
+            "type": "t_uint256",
+            "contract": "Presale",
+            "src": "contracts/Presale.sol:39"
+          },
+          {
+            "label": "releaseTokenTotalPercent",
+            "offset": 0,
+            "slot": "111",
+            "type": "t_uint256",
+            "contract": "Presale",
+            "src": "contracts/Presale.sol:41"
+          },
+          {
+            "label": "instantRelease",
+            "offset": 0,
+            "slot": "112",
+            "type": "t_uint256",
+            "contract": "Presale",
+            "src": "contracts/Presale.sol:43"
+          },
+          {
+            "label": "maxHoldingTime",
+            "offset": 0,
+            "slot": "113",
+            "type": "t_uint256",
+            "contract": "Presale",
+            "src": "contracts/Presale.sol:45"
+          },
+          {
+            "label": "startReleaseTime",
+            "offset": 0,
+            "slot": "114",
+            "type": "t_uint256",
+            "contract": "Presale",
+            "src": "contracts/Presale.sol:47"
+          }
+        ],
+        "types": {
+          "t_address": {
+            "label": "address",
+            "numberOfBytes": "20"
+          },
+          "t_array(t_address)dyn_storage": {
+            "label": "address[]",
+            "numberOfBytes": "32"
+          },
+          "t_array(t_uint256)49_storage": {
+            "label": "uint256[49]",
+            "numberOfBytes": "1568"
+          },
+          "t_array(t_uint256)50_storage": {
+            "label": "uint256[50]",
+            "numberOfBytes": "1600"
+          },
+          "t_bool": {
+            "label": "bool",
+            "numberOfBytes": "1"
+          },
+          "t_contract(IERC20)1231": {
+            "label": "contract IERC20",
+            "numberOfBytes": "20"
+          },
+          "t_mapping(t_address,t_struct(UserData)1720_storage)": {
+            "label": "mapping(address => struct Presale.UserData)",
+            "numberOfBytes": "32"
+          },
+          "t_struct(UserData)1720_storage": {
+            "label": "struct Presale.UserData",
+            "members": [
+              {
+                "label": "totalTokenAmount",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "tokenAmountReceived",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "1"
+              },
+              {
+                "label": "referralRewardAmount",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "2"
+              }
+            ],
+            "numberOfBytes": "96"
+          },
+          "t_uint256": {
+            "label": "uint256",
+            "numberOfBytes": "32"
+          },
+          "t_uint8": {
+            "label": "uint8",
+            "numberOfBytes": "1"
+          }
+        }
+      }
+    },
+    "fbf7d6df9c7a19432e804d2a06c667311fc0585f5b8a9042f6c62e9ee417f67c": {
+      "address": "0x0fBd000FEcc1186d1389b4247daB85DDD0eFAaa9",
+      "txHash": "0xec47da58bc3ad3dc5bb76c58261eb6d912a5f62a7be68f03d85a26d235e5b7e3",
+      "layout": {
+        "storage": [
+          {
+            "label": "_initialized",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_uint8",
+            "contract": "Initializable",
+            "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:62",
+            "retypedFrom": "bool"
+          },
+          {
+            "label": "_initializing",
+            "offset": 1,
+            "slot": "0",
+            "type": "t_bool",
+            "contract": "Initializable",
+            "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:67"
+          },
+          {
+            "label": "__gap",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_array(t_uint256)50_storage",
+            "contract": "ContextUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/utils/ContextUpgradeable.sol:36"
+          },
+          {
+            "label": "_owner",
+            "offset": 0,
+            "slot": "51",
+            "type": "t_address",
+            "contract": "OwnableUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol:22"
+          },
+          {
+            "label": "__gap",
+            "offset": 0,
+            "slot": "52",
+            "type": "t_array(t_uint256)49_storage",
+            "contract": "OwnableUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol:94"
+          },
+          {
+            "label": "token",
+            "offset": 0,
+            "slot": "101",
+            "type": "t_contract(IERC20)1231",
+            "contract": "PrivateSale",
+            "src": "contracts/PrivateSale.sol:12"
+          },
+          {
+            "label": "BUSD",
+            "offset": 0,
+            "slot": "102",
+            "type": "t_contract(IERC20)1231",
+            "contract": "PrivateSale",
+            "src": "contracts/PrivateSale.sol:18"
+          },
+          {
+            "label": "enabled",
+            "offset": 20,
+            "slot": "102",
+            "type": "t_bool",
+            "contract": "PrivateSale",
+            "src": "contracts/PrivateSale.sol:20"
+          },
+          {
+            "label": "privateSalePrice",
+            "offset": 0,
+            "slot": "103",
+            "type": "t_uint256",
+            "contract": "PrivateSale",
+            "src": "contracts/PrivateSale.sol:21"
+          },
+          {
+            "label": "maxRaisedBUSD",
+            "offset": 0,
+            "slot": "104",
+            "type": "t_uint256",
+            "contract": "PrivateSale",
+            "src": "contracts/PrivateSale.sol:22"
+          },
+          {
+            "label": "claimEnabled",
+            "offset": 0,
+            "slot": "105",
+            "type": "t_bool",
+            "contract": "PrivateSale",
+            "src": "contracts/PrivateSale.sol:23"
+          },
+          {
+            "label": "minBUSDBoughtPerWallet",
+            "offset": 0,
+            "slot": "106",
+            "type": "t_uint256",
+            "contract": "PrivateSale",
+            "src": "contracts/PrivateSale.sol:25"
+          },
+          {
+            "label": "addressToUserData",
+            "offset": 0,
+            "slot": "107",
+            "type": "t_mapping(t_address,t_struct(UserData)1720_storage)",
+            "contract": "PrivateSale",
+            "src": "contracts/PrivateSale.sol:33"
+          },
+          {
+            "label": "users",
+            "offset": 0,
+            "slot": "108",
+            "type": "t_array(t_address)dyn_storage",
+            "contract": "PrivateSale",
+            "src": "contracts/PrivateSale.sol:35"
+          },
+          {
+            "label": "referralBonusPercent",
+            "offset": 0,
+            "slot": "109",
+            "type": "t_uint256",
+            "contract": "PrivateSale",
+            "src": "contracts/PrivateSale.sol:37"
+          },
+          {
+            "label": "totalRewardTracking",
+            "offset": 0,
+            "slot": "110",
+            "type": "t_uint256",
+            "contract": "PrivateSale",
+            "src": "contracts/PrivateSale.sol:39"
+          },
+          {
+            "label": "releaseTokenTotalPercent",
+            "offset": 0,
+            "slot": "111",
+            "type": "t_uint256",
+            "contract": "PrivateSale",
+            "src": "contracts/PrivateSale.sol:41"
+          },
+          {
+            "label": "instantRelease",
+            "offset": 0,
+            "slot": "112",
+            "type": "t_uint256",
+            "contract": "PrivateSale",
+            "src": "contracts/PrivateSale.sol:43"
+          },
+          {
+            "label": "maxHoldingTime",
+            "offset": 0,
+            "slot": "113",
+            "type": "t_uint256",
+            "contract": "PrivateSale",
+            "src": "contracts/PrivateSale.sol:45"
+          },
+          {
+            "label": "startReleaseTime",
+            "offset": 0,
+            "slot": "114",
+            "type": "t_uint256",
+            "contract": "PrivateSale",
+            "src": "contracts/PrivateSale.sol:47"
+          }
+        ],
+        "types": {
+          "t_address": {
+            "label": "address",
+            "numberOfBytes": "20"
+          },
+          "t_array(t_address)dyn_storage": {
+            "label": "address[]",
+            "numberOfBytes": "32"
+          },
+          "t_array(t_uint256)49_storage": {
+            "label": "uint256[49]",
+            "numberOfBytes": "1568"
+          },
+          "t_array(t_uint256)50_storage": {
+            "label": "uint256[50]",
+            "numberOfBytes": "1600"
+          },
+          "t_bool": {
+            "label": "bool",
+            "numberOfBytes": "1"
+          },
+          "t_contract(IERC20)1231": {
+            "label": "contract IERC20",
+            "numberOfBytes": "20"
+          },
+          "t_mapping(t_address,t_struct(UserData)1720_storage)": {
+            "label": "mapping(address => struct PrivateSale.UserData)",
+            "numberOfBytes": "32"
+          },
+          "t_struct(UserData)1720_storage": {
+            "label": "struct PrivateSale.UserData",
+            "members": [
+              {
+                "label": "totalTokenAmount",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "tokenAmountReceived",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "1"
+              },
+              {
+                "label": "referralRewardAmount",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "2"
+              }
+            ],
+            "numberOfBytes": "96"
+          },
+          "t_uint256": {
+            "label": "uint256",
+            "numberOfBytes": "32"
+          },
+          "t_uint8": {
+            "label": "uint8",
+            "numberOfBytes": "1"
+          }
+        }
+      }
+    }
+  }
+}
