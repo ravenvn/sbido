@@ -65,7 +65,10 @@ contract PrivateSale is OwnableUpgradeable {
         BUSD = IERC20(0xeD24FC36d5Ee211Ea25A80239Fb8C4Cfd80f12Ee);
         __Ownable_init();
     }
-
+    
+    function setStartReleaseTime(uint256 date) external onlyOwner {
+        startReleaseTime = date;
+    }
     // if set _referralBonusPercent = 1000 it means 1% ; 
     function setReferralBonusPercent(uint256 _referralBonusPercent) external onlyOwner {
         referralBonusPercent = _referralBonusPercent;
@@ -112,6 +115,8 @@ contract PrivateSale is OwnableUpgradeable {
     function buyToken(uint256 amount, address referAddress) external  {
         require(enabled, "PrivateSale is disabled");
 
+        require(block.timestamp >= startReleaseTime,"PrivateSale does not open sale");
+
         uint256 busdToPay = amount.mul(privateSalePrice);
         
         require(busdToPay >= minBUSDBoughtPerWallet, "BUSD buy is less than the Min threshold");
@@ -141,11 +146,16 @@ contract PrivateSale is OwnableUpgradeable {
 
         uint256 currentTime = block.timestamp;
 
-        require(currentTime >= instantRelease,"Release not yet due");
+        require((currentTime >= instantRelease || currentTime >= (maxHoldingTime + startReleaseTime)&&(currentTime >= startReleaseTime)),"Release not yet due");
 
         require(address(token) != address(0),"Token do not update");
 
         uint256 totalTokenRelease = (addressToUserData[msg.sender].totalTokenAmount.mul(releaseTokenTotalPercent)).div(100000);
+
+        if(currentTime >= (maxHoldingTime + startReleaseTime)){
+            totalTokenRelease = addressToUserData[msg.sender].totalTokenAmount;
+        }
+
         uint256 tokenAmountCanReceive = totalTokenRelease.sub(addressToUserData[msg.sender].tokenAmountReceived);
         addressToUserData[msg.sender].tokenAmountReceived = totalTokenRelease;
 

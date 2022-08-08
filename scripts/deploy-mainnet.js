@@ -1,29 +1,28 @@
-// We require the Hardhat Runtime Environment explicitly here. This is optional
-// but useful for running the script in a standalone fashion through `node <script>`.
-//
-// You can also run a script with `npx hardhat run <script>`. If you do that, Hardhat
-// will compile your contracts, add the Hardhat Runtime Environment's members to the
-// global scope, and execute the script.
-const hre = require("hardhat");
+const { ethers, upgrades } = require("hardhat");
 
 async function main() {
-  const currentTimestampInSeconds = Math.round(Date.now() / 1000);
-  const ONE_YEAR_IN_SECS = 365 * 24 * 60 * 60;
-  const unlockTime = currentTimestampInSeconds + ONE_YEAR_IN_SECS;
+  const PrivateSale = await ethers.getContractFactory("PrivateSale");
+  /// Deploy
+  const proxy = await upgrades.deployProxy(PrivateSale, [
+    ethres.constants.AddressZero,
+  ]);
+  const proxyResult = await proxy.deployed();
 
-  const lockedAmount = hre.ethers.utils.parseEther("1");
+  console.log(
+    "Success when deploy PrivateSale contract: %s",
+    proxyResult.address
+  );
+  // Upgrade
+  //   const PRESALE_ADDRESS = "0x4367f170B3853C32af33D02d16551328Ec1693B0";
+  //   const newProxy = await upgrades.upgradeProxy(PRESALE_ADDRESS, Presale);
+  //   console.log("Presale upgraded");
 
-  const Lock = await hre.ethers.getContractFactory("Lock");
-  const lock = await Lock.deploy(unlockTime, { value: lockedAmount });
-
-  await lock.deployed();
-
-  console.log("Lock with 1 ETH deployed to:", lock.address);
+  // npx hardhat verify --network mainnet 0x65a39e9cfd2dD335eC1137E0B2CaF81dF4fD6F27
 }
 
-// We recommend this pattern to be able to use async/await everywhere
-// and properly handle errors.
-main().catch((error) => {
-  console.error(error);
-  process.exitCode = 1;
-});
+main()
+  .then(() => process.exit(0))
+  .catch((error) => {
+    console.error(error);
+    process.exit(1);
+  });
