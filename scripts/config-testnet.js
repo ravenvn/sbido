@@ -1,6 +1,6 @@
 const { ethers, upgrades } = require("hardhat");
 
-const PriSale_ADDRESS = "0x8BFa5cB0B3aEb5Ee95550cee469773d194c18859";
+const PriSale_ADDRESS = "0xB595169998051843b48567390C3fd44af6323b39";
 
 async function main() {
   const priSale = await ethers.getContractAt("PrivateSale", PriSale_ADDRESS);

@@ -19,6 +19,11 @@
       "address": "0x3EA71b38884EB74432229144942249C2770dc41D",
       "txHash": "0x322e288d846c9b2cb234abc1e9b88046a3d159559674c3fd045b6d45a3eed31c",
       "kind": "transparent"
+    },
+    {
+      "address": "0xB595169998051843b48567390C3fd44af6323b39",
+      "txHash": "0x3a63d2b4931b94e72e897036e00457dbb6de024a83ae75fd0d198c8fde55acd6",
+      "kind": "transparent"
     }
   ],
   "impls": {
@@ -703,6 +708,243 @@
               }
             ],
             "numberOfBytes": "96"
+          },
+          "t_uint256": {
+            "label": "uint256",
+            "numberOfBytes": "32"
+          },
+          "t_uint8": {
+            "label": "uint8",
+            "numberOfBytes": "1"
+          }
+        }
+      }
+    },
+    "fec6aa2f58d8d16f0d821a8dae866821bd2ab95ebc273645c91c381bcdbdbb35": {
+      "address": "0x240a68B265936F63BaF1d460849c689728E8642b",
+      "txHash": "0x86980d11af4700c3c8e8ce05970094367df87252910f5b8abfdcab2aa244db99",
+      "layout": {
+        "storage": [
+          {
+            "label": "_initialized",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_uint8",
+            "contract": "Initializable",
+            "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:62",
+            "retypedFrom": "bool"
+          },
+          {
+            "label": "_initializing",
+            "offset": 1,
+            "slot": "0",
+            "type": "t_bool",
+            "contract": "Initializable",
+            "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:67"
+          },
+          {
+            "label": "__gap",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_array(t_uint256)50_storage",
+            "contract": "ContextUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/utils/ContextUpgradeable.sol:36"
+          },
+          {
+            "label": "_owner",
+            "offset": 0,
+            "slot": "51",
+            "type": "t_address",
+            "contract": "OwnableUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol:22"
+          },
+          {
+            "label": "__gap",
+            "offset": 0,
+            "slot": "52",
+            "type": "t_array(t_uint256)49_storage",
+            "contract": "OwnableUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol:94"
+          },
+          {
+            "label": "token",
+            "offset": 0,
+            "slot": "101",
+            "type": "t_contract(IERC20)1231",
+            "contract": "PrivateSale",
+            "src": "contracts/PrivateSale.sol:12"
+          },
+          {
+            "label": "BUSD",
+            "offset": 0,
+            "slot": "102",
+            "type": "t_contract(IERC20)1231",
+            "contract": "PrivateSale",
+            "src": "contracts/PrivateSale.sol:18"
+          },
+          {
+            "label": "enabled",
+            "offset": 20,
+            "slot": "102",
+            "type": "t_bool",
+            "contract": "PrivateSale",
+            "src": "contracts/PrivateSale.sol:20"
+          },
+          {
+            "label": "privateSalePrice",
+            "offset": 0,
+            "slot": "103",
+            "type": "t_uint256",
+            "contract": "PrivateSale",
+            "src": "contracts/PrivateSale.sol:21"
+          },
+          {
+            "label": "maxRaisedBUSD",
+            "offset": 0,
+            "slot": "104",
+            "type": "t_uint256",
+            "contract": "PrivateSale",
+            "src": "contracts/PrivateSale.sol:22"
+          },
+          {
+            "label": "claimEnabled",
+            "offset": 0,
+            "slot": "105",
+            "type": "t_bool",
+            "contract": "PrivateSale",
+            "src": "contracts/PrivateSale.sol:23"
+          },
+          {
+            "label": "minBUSDBoughtPerWallet",
+            "offset": 0,
+            "slot": "106",
+            "type": "t_uint256",
+            "contract": "PrivateSale",
+            "src": "contracts/PrivateSale.sol:25"
+          },
+          {
+            "label": "addressToUserData",
+            "offset": 0,
+            "slot": "107",
+            "type": "t_mapping(t_address,t_struct(UserData)1722_storage)",
+            "contract": "PrivateSale",
+            "src": "contracts/PrivateSale.sol:34"
+          },
+          {
+            "label": "users",
+            "offset": 0,
+            "slot": "108",
+            "type": "t_array(t_address)dyn_storage",
+            "contract": "PrivateSale",
+            "src": "contracts/PrivateSale.sol:36"
+          },
+          {
+            "label": "referralBonusPercent",
+            "offset": 0,
+            "slot": "109",
+            "type": "t_uint256",
+            "contract": "PrivateSale",
+            "src": "contracts/PrivateSale.sol:38"
+          },
+          {
+            "label": "totalRewardTracking",
+            "offset": 0,
+            "slot": "110",
+            "type": "t_uint256",
+            "contract": "PrivateSale",
+            "src": "contracts/PrivateSale.sol:40"
+          },
+          {
+            "label": "releaseTokenTotalPercent",
+            "offset": 0,
+            "slot": "111",
+            "type": "t_uint256",
+            "contract": "PrivateSale",
+            "src": "contracts/PrivateSale.sol:42"
+          },
+          {
+            "label": "instantRelease",
+            "offset": 0,
+            "slot": "112",
+            "type": "t_uint256",
+            "contract": "PrivateSale",
+            "src": "contracts/PrivateSale.sol:44"
+          },
+          {
+            "label": "maxHoldingTime",
+            "offset": 0,
+            "slot": "113",
+            "type": "t_uint256",
+            "contract": "PrivateSale",
+            "src": "contracts/PrivateSale.sol:46"
+          },
+          {
+            "label": "startReleaseTime",
+            "offset": 0,
+            "slot": "114",
+            "type": "t_uint256",
+            "contract": "PrivateSale",
+            "src": "contracts/PrivateSale.sol:48"
+          }
+        ],
+        "types": {
+          "t_address": {
+            "label": "address",
+            "numberOfBytes": "20"
+          },
+          "t_array(t_address)dyn_storage": {
+            "label": "address[]",
+            "numberOfBytes": "32"
+          },
+          "t_array(t_uint256)49_storage": {
+            "label": "uint256[49]",
+            "numberOfBytes": "1568"
+          },
+          "t_array(t_uint256)50_storage": {
+            "label": "uint256[50]",
+            "numberOfBytes": "1600"
+          },
+          "t_bool": {
+            "label": "bool",
+            "numberOfBytes": "1"
+          },
+          "t_contract(IERC20)1231": {
+            "label": "contract IERC20",
+            "numberOfBytes": "20"
+          },
+          "t_mapping(t_address,t_struct(UserData)1722_storage)": {
+            "label": "mapping(address => struct PrivateSale.UserData)",
+            "numberOfBytes": "32"
+          },
+          "t_struct(UserData)1722_storage": {
+            "label": "struct PrivateSale.UserData",
+            "members": [
+              {
+                "label": "totalTokenAmount",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "tokenAmountReceived",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "1"
+              },
+              {
+                "label": "totalRewardAmount",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "2"
+              },
+              {
+                "label": "rewardAmountReceived",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "3"
+              }
+            ],
+            "numberOfBytes": "128"
           },
           "t_uint256": {
             "label": "uint256",

@@ -28,3 +28,5 @@ npx hardhat verify --network testnet 0x4C2343894Ee979A046A12E28eC5834A73335DAA1
 
 Unix Timestamp Conversion Tools
 https://www.epochconverter.com/
+
+//(9/8/2022)Testnet PrivateSale contract: 0xB595169998051843b48567390C3fd44af6323b39

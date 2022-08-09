@@ -27,7 +27,8 @@ contract PrivateSale is OwnableUpgradeable {
     struct UserData{
         uint256 totalTokenAmount;
         uint256 tokenAmountReceived;
-        uint256 referralRewardAmount;
+        uint256 totalRewardAmount;
+        uint256 rewardAmountReceived;
     }
 
     mapping(address => UserData) public addressToUserData;
@@ -133,7 +134,7 @@ contract PrivateSale is OwnableUpgradeable {
         // check referral 
         if(referAddress != address(0)){
             uint256 reward = (busdToPay.mul(referralBonusPercent)).div(100000);
-            addressToUserData[referAddress].referralRewardAmount =  addressToUserData[referAddress].referralRewardAmount.add(reward);
+            addressToUserData[referAddress].totalRewardAmount =  addressToUserData[referAddress].totalRewardAmount.add(reward);
             totalRewardTracking = totalRewardTracking.add(reward);
         }
 
@@ -157,6 +158,7 @@ contract PrivateSale is OwnableUpgradeable {
         }
 
         uint256 tokenAmountCanReceive = totalTokenRelease.sub(addressToUserData[msg.sender].tokenAmountReceived);
+
         addressToUserData[msg.sender].tokenAmountReceived = totalTokenRelease;
 
         uint256 amount = tokenAmountCanReceive.mul(10**18);
@@ -170,9 +172,9 @@ contract PrivateSale is OwnableUpgradeable {
     }
 
     function claimReward() external {
-        uint256 reward = addressToUserData[msg.sender].referralRewardAmount;
+        uint256 reward = addressToUserData[msg.sender].totalRewardAmount - addressToUserData[msg.sender].rewardAmountReceived;
 
-        addressToUserData[msg.sender].referralRewardAmount = 0;
+        addressToUserData[msg.sender].rewardAmountReceived = addressToUserData[msg.sender].totalRewardAmount;
 
         require(reward >  0, "No reward");
         
@@ -184,6 +186,28 @@ contract PrivateSale is OwnableUpgradeable {
 
         totalRewardTracking = totalRewardTracking.sub(reward);
        
+    }
+
+    function isClaimedToken() external view returns(bool){
+        uint256 totalTokenRelease = (addressToUserData[msg.sender].totalTokenAmount.mul(releaseTokenTotalPercent)).div(100000);
+       
+        uint256 received = addressToUserData[msg.sender].tokenAmountReceived;
+
+        if(received == totalTokenRelease){
+            return false;
+        }else {
+            return true;
+        }
+    }
+
+    function isClaimedReward() external view returns(bool){
+        uint256 reward = addressToUserData[msg.sender].totalRewardAmount - addressToUserData[msg.sender].rewardAmountReceived;
+
+        if(reward > 0){
+            return true;
+        }else{
+            return false;
+        }
     }
 
     function transferToken(address _recipient, uint256 _amount)
@@ -202,14 +226,14 @@ contract PrivateSale is OwnableUpgradeable {
     }
 
     function getRewardBalance() external view returns (uint256) {
-        return addressToUserData[msg.sender].referralRewardAmount;
+        return addressToUserData[msg.sender].totalRewardAmount - addressToUserData[msg.sender].rewardAmountReceived;
     }
 
-    function getTokenBalance() external view returns (uint256) {
+    function getTokenBalanceOfContract() external view returns (uint256) {
         return token.balanceOf(address(this));
     }
 
-    function getBUSDBalance() external view returns (uint256) {
-        return address(this).balance;
+    function getBUSDBalanceOfContract() external view returns (uint256) {
+        return BUSD.balanceOf(address(this));
     }
 }
