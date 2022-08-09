@@ -63,7 +63,7 @@ contract PrivateSale is OwnableUpgradeable {
         claimEnabled = false;
         maxRaisedBUSD = 100000 ether;
         minBUSDBoughtPerWallet = 100 ether;
-        maxBUSDBoughtPerWallet = 1000 ether;
+        maxBUSDBoughtPerWallet = 10000 ether;
         referralBonusPercent = 10000; //mini percent  10% = 10000 , 100% = 100 000
         maxHoldingTime = 31536000;
         startReleaseTime = block.timestamp;

@@ -24,6 +24,11 @@
       "address": "0xB595169998051843b48567390C3fd44af6323b39",
       "txHash": "0x3a63d2b4931b94e72e897036e00457dbb6de024a83ae75fd0d198c8fde55acd6",
       "kind": "transparent"
+    },
+    {
+      "address": "0xf8b4ed770f40791ca52D3463Fe70349f44b21886",
+      "txHash": "0x1fe0fdbad743b6ad26e2d9bcfa62ee10dc640a5cc49f7144d7d832119756cb17",
+      "kind": "transparent"
     }
   ],
   "impls": {
@@ -917,6 +922,251 @@
             "numberOfBytes": "32"
           },
           "t_struct(UserData)1722_storage": {
+            "label": "struct PrivateSale.UserData",
+            "members": [
+              {
+                "label": "totalTokenAmount",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "tokenAmountReceived",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "1"
+              },
+              {
+                "label": "totalRewardAmount",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "2"
+              },
+              {
+                "label": "rewardAmountReceived",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "3"
+              }
+            ],
+            "numberOfBytes": "128"
+          },
+          "t_uint256": {
+            "label": "uint256",
+            "numberOfBytes": "32"
+          },
+          "t_uint8": {
+            "label": "uint8",
+            "numberOfBytes": "1"
+          }
+        }
+      }
+    },
+    "0617767e1577b8e8c2bf124412dda056a87b0b30ff69829031e78111599f73ac": {
+      "address": "0x835FafA41E547f250ab958D7a4adc18388cE77b3",
+      "txHash": "0x54b3e7dd100771b441a6e82a75e811630b27b8a73674990cf9a2ecfc76fc5664",
+      "layout": {
+        "storage": [
+          {
+            "label": "_initialized",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_uint8",
+            "contract": "Initializable",
+            "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:62",
+            "retypedFrom": "bool"
+          },
+          {
+            "label": "_initializing",
+            "offset": 1,
+            "slot": "0",
+            "type": "t_bool",
+            "contract": "Initializable",
+            "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:67"
+          },
+          {
+            "label": "__gap",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_array(t_uint256)50_storage",
+            "contract": "ContextUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/utils/ContextUpgradeable.sol:36"
+          },
+          {
+            "label": "_owner",
+            "offset": 0,
+            "slot": "51",
+            "type": "t_address",
+            "contract": "OwnableUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol:22"
+          },
+          {
+            "label": "__gap",
+            "offset": 0,
+            "slot": "52",
+            "type": "t_array(t_uint256)49_storage",
+            "contract": "OwnableUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol:94"
+          },
+          {
+            "label": "token",
+            "offset": 0,
+            "slot": "101",
+            "type": "t_contract(IERC20)1231",
+            "contract": "PrivateSale",
+            "src": "contracts/PrivateSale.sol:12"
+          },
+          {
+            "label": "BUSD",
+            "offset": 0,
+            "slot": "102",
+            "type": "t_contract(IERC20)1231",
+            "contract": "PrivateSale",
+            "src": "contracts/PrivateSale.sol:18"
+          },
+          {
+            "label": "enabled",
+            "offset": 20,
+            "slot": "102",
+            "type": "t_bool",
+            "contract": "PrivateSale",
+            "src": "contracts/PrivateSale.sol:20"
+          },
+          {
+            "label": "privateSalePrice",
+            "offset": 0,
+            "slot": "103",
+            "type": "t_uint256",
+            "contract": "PrivateSale",
+            "src": "contracts/PrivateSale.sol:22"
+          },
+          {
+            "label": "maxRaisedBUSD",
+            "offset": 0,
+            "slot": "104",
+            "type": "t_uint256",
+            "contract": "PrivateSale",
+            "src": "contracts/PrivateSale.sol:24"
+          },
+          {
+            "label": "claimEnabled",
+            "offset": 0,
+            "slot": "105",
+            "type": "t_bool",
+            "contract": "PrivateSale",
+            "src": "contracts/PrivateSale.sol:26"
+          },
+          {
+            "label": "minBUSDBoughtPerWallet",
+            "offset": 0,
+            "slot": "106",
+            "type": "t_uint256",
+            "contract": "PrivateSale",
+            "src": "contracts/PrivateSale.sol:28"
+          },
+          {
+            "label": "maxBUSDBoughtPerWallet",
+            "offset": 0,
+            "slot": "107",
+            "type": "t_uint256",
+            "contract": "PrivateSale",
+            "src": "contracts/PrivateSale.sol:30"
+          },
+          {
+            "label": "addressToUserData",
+            "offset": 0,
+            "slot": "108",
+            "type": "t_mapping(t_address,t_struct(UserData)1724_storage)",
+            "contract": "PrivateSale",
+            "src": "contracts/PrivateSale.sol:39"
+          },
+          {
+            "label": "users",
+            "offset": 0,
+            "slot": "109",
+            "type": "t_array(t_address)dyn_storage",
+            "contract": "PrivateSale",
+            "src": "contracts/PrivateSale.sol:41"
+          },
+          {
+            "label": "referralBonusPercent",
+            "offset": 0,
+            "slot": "110",
+            "type": "t_uint256",
+            "contract": "PrivateSale",
+            "src": "contracts/PrivateSale.sol:43"
+          },
+          {
+            "label": "totalRewardTracking",
+            "offset": 0,
+            "slot": "111",
+            "type": "t_uint256",
+            "contract": "PrivateSale",
+            "src": "contracts/PrivateSale.sol:45"
+          },
+          {
+            "label": "releaseTokenTotalPercent",
+            "offset": 0,
+            "slot": "112",
+            "type": "t_uint256",
+            "contract": "PrivateSale",
+            "src": "contracts/PrivateSale.sol:47"
+          },
+          {
+            "label": "instantRelease",
+            "offset": 0,
+            "slot": "113",
+            "type": "t_uint256",
+            "contract": "PrivateSale",
+            "src": "contracts/PrivateSale.sol:49"
+          },
+          {
+            "label": "maxHoldingTime",
+            "offset": 0,
+            "slot": "114",
+            "type": "t_uint256",
+            "contract": "PrivateSale",
+            "src": "contracts/PrivateSale.sol:51"
+          },
+          {
+            "label": "startReleaseTime",
+            "offset": 0,
+            "slot": "115",
+            "type": "t_uint256",
+            "contract": "PrivateSale",
+            "src": "contracts/PrivateSale.sol:53"
+          }
+        ],
+        "types": {
+          "t_address": {
+            "label": "address",
+            "numberOfBytes": "20"
+          },
+          "t_array(t_address)dyn_storage": {
+            "label": "address[]",
+            "numberOfBytes": "32"
+          },
+          "t_array(t_uint256)49_storage": {
+            "label": "uint256[49]",
+            "numberOfBytes": "1568"
+          },
+          "t_array(t_uint256)50_storage": {
+            "label": "uint256[50]",
+            "numberOfBytes": "1600"
+          },
+          "t_bool": {
+            "label": "bool",
+            "numberOfBytes": "1"
+          },
+          "t_contract(IERC20)1231": {
+            "label": "contract IERC20",
+            "numberOfBytes": "20"
+          },
+          "t_mapping(t_address,t_struct(UserData)1724_storage)": {
+            "label": "mapping(address => struct PrivateSale.UserData)",
+            "numberOfBytes": "32"
+          },
+          "t_struct(UserData)1724_storage": {
             "label": "struct PrivateSale.UserData",
             "members": [
               {

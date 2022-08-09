@@ -30,3 +30,5 @@ Unix Timestamp Conversion Tools
 https://www.epochconverter.com/
 
 //(9/8/2022)Testnet PrivateSale contract: 0xB595169998051843b48567390C3fd44af6323b39
+
+//(10/8/2022)Testnet PrivateSale contract: 0xf8b4ed770f40791ca52D3463Fe70349f44b21886
