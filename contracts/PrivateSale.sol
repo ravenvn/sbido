@@ -180,7 +180,7 @@ contract PrivateSale is OwnableUpgradeable {
         
         uint256 referTokenAmount = addressToUserData[msg.sender].totalTokenAmount;
 
-        require(referTokenAmount > 0,"Haven't bought tokens yet");
+        require(referTokenAmount > 0,"You need to buy private sale to be able to get reward");
 
         require(BUSD.transfer(msg.sender,reward),"Transfer busd to refer fail");
 
