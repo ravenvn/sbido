@@ -18,11 +18,16 @@ contract PrivateSale is OwnableUpgradeable {
     IERC20 public BUSD ;
 
     bool public enabled;
+
     uint256 public privateSalePrice;
+
     uint256 public maxRaisedBUSD;
+
     bool public claimEnabled;
 
     uint256 public minBUSDBoughtPerWallet;
+
+    uint256 public maxBUSDBoughtPerWallet;
 
     struct UserData{
         uint256 totalTokenAmount;
@@ -58,6 +63,7 @@ contract PrivateSale is OwnableUpgradeable {
         claimEnabled = false;
         maxRaisedBUSD = 100000 ether;
         minBUSDBoughtPerWallet = 100 ether;
+        maxBUSDBoughtPerWallet = 1000 ether;
         referralBonusPercent = 10000; //mini percent  10% = 10000 , 100% = 100 000
         maxHoldingTime = 31536000;
         startReleaseTime = block.timestamp;
@@ -77,6 +83,10 @@ contract PrivateSale is OwnableUpgradeable {
 
     function setMinBUSDBoughtPerWallet(uint256 _minBUSD) external onlyOwner{
         minBUSDBoughtPerWallet = _minBUSD;
+    }
+
+    function setMaxBUSDBoughtPerWallet(uint256 _maxBUSD) external onlyOwner {
+        maxBUSDBoughtPerWallet = _maxBUSD;
     }
 
     function setToken(IERC20 _token) external onlyOwner {
@@ -120,7 +130,9 @@ contract PrivateSale is OwnableUpgradeable {
 
         uint256 busdToPay = amount.mul(privateSalePrice);
         
-        require(busdToPay >= minBUSDBoughtPerWallet, "BUSD buy is less than the Min threshold");
+        require(busdToPay >= minBUSDBoughtPerWallet, "You can not buy less than the Min threshold");
+
+        require(busdToPay <= maxBUSDBoughtPerWallet, "You can not buy more than the Max threshold");
 
         require(BUSD.balanceOf(address(this)).add(busdToPay) <= maxRaisedBUSD, "Max raised BUSD amount exceeded");
         //user transfer BUSD to contract
