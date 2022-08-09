@@ -55,7 +55,7 @@ describe("PrivateSale", () => {
   it("Should claim reward well", async function () {
     //user1 buy 400 ether = > user2 got reward 40 ether
     await expect(privateSale.connect(user2).claimReward()).to.be.revertedWith(
-      "Haven't bought tokens yet"
+      "You need to buy private sale to be able to get reward"
     );
 
     //want to get reward user2 need to buy token
