@@ -30,7 +30,7 @@ contract PrivateSale is OwnableUpgradeable {
     uint256 public maxBUSDBoughtPerWallet;
 
     struct UserData{
-        uint256 totalTokenAmount;
+        uint256 totalBUSDAmountContributed;
         uint256 tokenAmountReceived;
         uint256 totalRewardAmount;
         uint256 rewardAmountReceived;
@@ -59,12 +59,12 @@ contract PrivateSale is OwnableUpgradeable {
     function initialize(IERC20 _token) public initializer {
         token = _token;
         enabled = false;
-        privateSalePrice = 0.0004 ether;
+        privateSalePrice = 0.0002 ether;
         claimEnabled = false;
         maxRaisedBUSD = 100000 ether;
         minBUSDBoughtPerWallet = 100 ether;
         maxBUSDBoughtPerWallet = 10000 ether;
-        referralBonusPercent = 10000; //mini percent  10% = 10000 , 100% = 100 000
+        referralBonusPercent = 20000; //mini percent  10% = 10000 , 100% = 100 000
         maxHoldingTime = 31536000;
         startReleaseTime = block.timestamp;
         instantRelease = block.timestamp + maxHoldingTime;
@@ -122,35 +122,33 @@ contract PrivateSale is OwnableUpgradeable {
         require(releaseTokenTotalPercent.add(_miniPercent) <= 100000,"Total percent than more 100%");
         releaseTokenTotalPercent = releaseTokenTotalPercent.add(_miniPercent);
     }
-
-    function buyToken(uint256 amount, address referAddress) external  {
+    // busdAmount is wei value
+    function buyToken(uint256 busdAmount, address referAddress) external  {
         require(enabled, "PrivateSale is disabled");
 
         require(block.timestamp >= startReleaseTime,"PrivateSale does not open sale");
-
-        uint256 busdToPay = amount.mul(privateSalePrice);
         
-        require(busdToPay >= minBUSDBoughtPerWallet, "You can not buy less than the Min threshold");
+        require(busdAmount >= minBUSDBoughtPerWallet, "You can not buy less than the Min threshold");
 
-        require(busdToPay <= maxBUSDBoughtPerWallet, "You can not buy more than the Max threshold");
+        require(busdAmount <= maxBUSDBoughtPerWallet, "You can not buy more than the Max threshold");
 
-        require(BUSD.balanceOf(address(this)).add(busdToPay) <= maxRaisedBUSD, "Max raised BUSD amount exceeded");
+        require(BUSD.balanceOf(address(this)).add(busdAmount) <= maxRaisedBUSD, "Max raised BUSD amount exceeded");
         //user transfer BUSD to contract
-        require(BUSD.transferFrom(msg.sender,address(this),busdToPay),"Failure On BUSD Transfer");
+        require(BUSD.transferFrom(msg.sender,address(this),busdAmount),"Failure On BUSD Transfer");
         
 
-        addressToUserData[msg.sender].totalTokenAmount = addressToUserData[
+        addressToUserData[msg.sender].totalBUSDAmountContributed = addressToUserData[
             msg.sender
-        ].totalTokenAmount.add(amount);
+        ].totalBUSDAmountContributed.add(busdAmount);
 
         // check referral 
         if(referAddress != address(0)){
-            uint256 reward = (busdToPay.mul(referralBonusPercent)).div(100000);
+            uint256 reward = (busdAmount.mul(referralBonusPercent)).div(100000);
             addressToUserData[referAddress].totalRewardAmount =  addressToUserData[referAddress].totalRewardAmount.add(reward);
             totalRewardTracking = totalRewardTracking.add(reward);
         }
 
-        emit Bought(msg.sender, amount);
+        emit Bought(msg.sender, busdAmount);
     }
 
     function claimToken() external  {
@@ -163,21 +161,23 @@ contract PrivateSale is OwnableUpgradeable {
 
         require(address(token) != address(0),"Token do not update");
 
-        uint256 totalTokenRelease = (addressToUserData[msg.sender].totalTokenAmount.mul(releaseTokenTotalPercent)).div(100000);
+        uint256 eth = 1 ether;
+        
+        uint256 totalTokenRelease = addressToUserData[msg.sender].totalBUSDAmountContributed.mul(releaseTokenTotalPercent).mul(eth).div(privateSalePrice).div(100000);
 
         if(currentTime >= (maxHoldingTime + startReleaseTime)){
-            totalTokenRelease = addressToUserData[msg.sender].totalTokenAmount;
+            totalTokenRelease = addressToUserData[msg.sender].totalBUSDAmountContributed.mul(eth).div(privateSalePrice);
         }
+
+        require(addressToUserData[msg.sender].tokenAmountReceived <= totalTokenRelease,"Can not claim more");
 
         uint256 tokenAmountCanReceive = totalTokenRelease.sub(addressToUserData[msg.sender].tokenAmountReceived);
 
         addressToUserData[msg.sender].tokenAmountReceived = totalTokenRelease;
 
-        uint256 amount = tokenAmountCanReceive.mul(10**18);
-
         token.transfer(
             msg.sender,
-            amount
+            tokenAmountCanReceive
         );
         
         emit Received(msg.sender, tokenAmountCanReceive);
@@ -190,9 +190,9 @@ contract PrivateSale is OwnableUpgradeable {
 
         require(reward >  0, "No reward");
         
-        uint256 referTokenAmount = addressToUserData[msg.sender].totalTokenAmount;
+        uint256 referBusdAmount = addressToUserData[msg.sender].totalBUSDAmountContributed;
 
-        require(referTokenAmount > 0,"You need to buy private sale to be able to get reward");
+        require(referBusdAmount > 0,"You need to buy private sale to be able to get reward");
 
         require(BUSD.transfer(msg.sender,reward),"Transfer busd to refer fail");
 
@@ -200,8 +200,11 @@ contract PrivateSale is OwnableUpgradeable {
        
     }
 
-    function isClaimedToken() external view returns(bool){
-        uint256 totalTokenRelease = (addressToUserData[msg.sender].totalTokenAmount.mul(releaseTokenTotalPercent)).div(100000);
+    function canClaimToken() external view returns(bool){
+
+        uint256 eth = 1 ether;
+        
+        uint256 totalTokenRelease = (addressToUserData[msg.sender].totalBUSDAmountContributed.mul(eth).mul(releaseTokenTotalPercent)).div(100000).div(privateSalePrice);
        
         uint256 received = addressToUserData[msg.sender].tokenAmountReceived;
 
@@ -212,7 +215,10 @@ contract PrivateSale is OwnableUpgradeable {
         }
     }
 
-    function isClaimedReward() external view returns(bool){
+    function canClaimReward() external view returns(bool){
+
+        require(addressToUserData[msg.sender].totalRewardAmount >= addressToUserData[msg.sender].rewardAmountReceived,"Can not claim more");
+
         uint256 reward = addressToUserData[msg.sender].totalRewardAmount - addressToUserData[msg.sender].rewardAmountReceived;
 
         if(reward > 0){
@@ -235,10 +241,6 @@ contract PrivateSale is OwnableUpgradeable {
         onlyOwner returns(bool)
     {
         return BUSD.transfer(_recipient,_amount);
-    }
-
-    function getRewardBalance() external view returns (uint256) {
-        return addressToUserData[msg.sender].totalRewardAmount - addressToUserData[msg.sender].rewardAmountReceived;
     }
 
     function getTokenBalanceOfContract() external view returns (uint256) {

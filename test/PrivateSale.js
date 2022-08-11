@@ -39,17 +39,15 @@ describe("PrivateSale", () => {
     await privateSale.setEnabled(true);
     await privateSale.setBUSDAddress(busdTest.address);
 
-    const priceBusd = 1000000 * ethers.utils.parseEther("0.0004");
     await busdTest
       .connect(user1)
-      .approve(
-        privateSale.address,
-        ethers.utils.parseEther(priceBusd.toString())
-      );
-    await privateSale.connect(user1).buyToken("1000000", user2.address);
+      .approve(privateSale.address, ethers.utils.parseEther("100"));
+    await privateSale
+      .connect(user1)
+      .buyToken(ethers.utils.parseEther("100"), user2.address);
 
     const busd_privateSale = await busdTest.balanceOf(privateSale.address);
-    expect(busd_privateSale).to.equal(priceBusd.toString());
+    expect(busd_privateSale).to.equal(ethers.utils.parseEther("100"));
   });
 
   it("Should claim reward well", async function () {
@@ -59,19 +57,18 @@ describe("PrivateSale", () => {
     );
 
     //want to get reward user2 need to buy token
-    const priceBusd = 500000 * ethers.utils.parseEther("0.0004");
+
     await busdTest
       .connect(user2)
-      .approve(
-        privateSale.address,
-        ethers.utils.parseEther(priceBusd.toString())
-      );
-    await privateSale.connect(user2).buyToken("500000", user1.address);
+      .approve(privateSale.address, ethers.utils.parseEther("100"));
+    await privateSale
+      .connect(user2)
+      .buyToken(ethers.utils.parseEther("100"), user1.address);
 
     await privateSale.connect(user2).claimReward();
 
     const user2_reward = await busdTest.balanceOf(user2.address);
-    expect(ethers.utils.formatEther(user2_reward)).to.equal("90.0");
+    expect(ethers.utils.formatEther(user2_reward)).to.equal("170.0");
   });
 
   it("Should claim token well", async function () {
