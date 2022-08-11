@@ -34,3 +34,6 @@ https://www.epochconverter.com/
 //(10/8/2022)Testnet PrivateSale contract: 0xf8b4ed770f40791ca52D3463Fe70349f44b21886
 
 //(11/8/2022)Testnet PrivateSale contract: 0x4F4017F5Fbd245dBE6a6315D3BC12c3357a1Fcf9
+
+// lunafarm private sale mainnet
+0x5eD7036c891E9Fa42A1735283E129271c04e2bF2

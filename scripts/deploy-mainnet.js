@@ -4,7 +4,7 @@ async function main() {
   const LunaFarmPrivateSale = await ethers.getContractFactory("LunaFarmPrivateSale");
   /// Deploy
   const proxy = await upgrades.deployProxy(LunaFarmPrivateSale, [
-    ethres.constants.AddressZero,
+    ethers.constants.AddressZero,
   ]);
   const proxyResult = await proxy.deployed();
 

@@ -1,0 +1,261 @@
+{
+  "manifestVersion": "3.2",
+  "admin": {
+    "address": "0xdF91FBC23ff160E41F1247bc1a873F3ea1733b2A",
+    "txHash": "0xdb1184960d2bf35fd7adc5367d0db5755b38f08a80e7873bcfe7af1d54041e8b"
+  },
+  "proxies": [
+    {
+      "address": "0x5eD7036c891E9Fa42A1735283E129271c04e2bF2",
+      "txHash": "0x6418bf4c8ee3307b43d94cd7c554d42b71de02813164cd6d5a8bf8868f4afe64",
+      "kind": "transparent"
+    }
+  ],
+  "impls": {
+    "43e459d1e4bb6c7fb34522cfbc4bee82f4f2f23208b0d3f0adc097468cb2b301": {
+      "address": "0xA7EB91A19155fCaCB1DF2D58B8761E5BCC9D5AAc",
+      "txHash": "0xe01e8346ed757e260669f603bb2d73171ab9eeebfdbc424c6592bcb80038785f",
+      "layout": {
+        "storage": [
+          {
+            "label": "_initialized",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_uint8",
+            "contract": "Initializable",
+            "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:62",
+            "retypedFrom": "bool"
+          },
+          {
+            "label": "_initializing",
+            "offset": 1,
+            "slot": "0",
+            "type": "t_bool",
+            "contract": "Initializable",
+            "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:67"
+          },
+          {
+            "label": "__gap",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_array(t_uint256)50_storage",
+            "contract": "ContextUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/utils/ContextUpgradeable.sol:36"
+          },
+          {
+            "label": "_owner",
+            "offset": 0,
+            "slot": "51",
+            "type": "t_address",
+            "contract": "OwnableUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol:22"
+          },
+          {
+            "label": "__gap",
+            "offset": 0,
+            "slot": "52",
+            "type": "t_array(t_uint256)49_storage",
+            "contract": "OwnableUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol:94"
+          },
+          {
+            "label": "token",
+            "offset": 0,
+            "slot": "101",
+            "type": "t_contract(IERC20)1231",
+            "contract": "LunaFarmPrivateSale",
+            "src": "contracts/LunaFarmPrivateSale.sol:12"
+          },
+          {
+            "label": "BUSD",
+            "offset": 0,
+            "slot": "102",
+            "type": "t_contract(IERC20)1231",
+            "contract": "LunaFarmPrivateSale",
+            "src": "contracts/LunaFarmPrivateSale.sol:18"
+          },
+          {
+            "label": "enabled",
+            "offset": 20,
+            "slot": "102",
+            "type": "t_bool",
+            "contract": "LunaFarmPrivateSale",
+            "src": "contracts/LunaFarmPrivateSale.sol:20"
+          },
+          {
+            "label": "privateSalePrice",
+            "offset": 0,
+            "slot": "103",
+            "type": "t_uint256",
+            "contract": "LunaFarmPrivateSale",
+            "src": "contracts/LunaFarmPrivateSale.sol:22"
+          },
+          {
+            "label": "maxRaisedBUSD",
+            "offset": 0,
+            "slot": "104",
+            "type": "t_uint256",
+            "contract": "LunaFarmPrivateSale",
+            "src": "contracts/LunaFarmPrivateSale.sol:24"
+          },
+          {
+            "label": "claimEnabled",
+            "offset": 0,
+            "slot": "105",
+            "type": "t_bool",
+            "contract": "LunaFarmPrivateSale",
+            "src": "contracts/LunaFarmPrivateSale.sol:26"
+          },
+          {
+            "label": "minBUSDBoughtPerWallet",
+            "offset": 0,
+            "slot": "106",
+            "type": "t_uint256",
+            "contract": "LunaFarmPrivateSale",
+            "src": "contracts/LunaFarmPrivateSale.sol:28"
+          },
+          {
+            "label": "maxBUSDBoughtPerWallet",
+            "offset": 0,
+            "slot": "107",
+            "type": "t_uint256",
+            "contract": "LunaFarmPrivateSale",
+            "src": "contracts/LunaFarmPrivateSale.sol:30"
+          },
+          {
+            "label": "addressToUserData",
+            "offset": 0,
+            "slot": "108",
+            "type": "t_mapping(t_address,t_struct(UserData)1724_storage)",
+            "contract": "LunaFarmPrivateSale",
+            "src": "contracts/LunaFarmPrivateSale.sol:39"
+          },
+          {
+            "label": "users",
+            "offset": 0,
+            "slot": "109",
+            "type": "t_array(t_address)dyn_storage",
+            "contract": "LunaFarmPrivateSale",
+            "src": "contracts/LunaFarmPrivateSale.sol:41"
+          },
+          {
+            "label": "referralBonusPercent",
+            "offset": 0,
+            "slot": "110",
+            "type": "t_uint256",
+            "contract": "LunaFarmPrivateSale",
+            "src": "contracts/LunaFarmPrivateSale.sol:43"
+          },
+          {
+            "label": "totalRewardTracking",
+            "offset": 0,
+            "slot": "111",
+            "type": "t_uint256",
+            "contract": "LunaFarmPrivateSale",
+            "src": "contracts/LunaFarmPrivateSale.sol:45"
+          },
+          {
+            "label": "releaseTokenTotalPercent",
+            "offset": 0,
+            "slot": "112",
+            "type": "t_uint256",
+            "contract": "LunaFarmPrivateSale",
+            "src": "contracts/LunaFarmPrivateSale.sol:47"
+          },
+          {
+            "label": "instantRelease",
+            "offset": 0,
+            "slot": "113",
+            "type": "t_uint256",
+            "contract": "LunaFarmPrivateSale",
+            "src": "contracts/LunaFarmPrivateSale.sol:49"
+          },
+          {
+            "label": "maxHoldingTime",
+            "offset": 0,
+            "slot": "114",
+            "type": "t_uint256",
+            "contract": "LunaFarmPrivateSale",
+            "src": "contracts/LunaFarmPrivateSale.sol:51"
+          },
+          {
+            "label": "startReleaseTime",
+            "offset": 0,
+            "slot": "115",
+            "type": "t_uint256",
+            "contract": "LunaFarmPrivateSale",
+            "src": "contracts/LunaFarmPrivateSale.sol:53"
+          }
+        ],
+        "types": {
+          "t_address": {
+            "label": "address",
+            "numberOfBytes": "20"
+          },
+          "t_array(t_address)dyn_storage": {
+            "label": "address[]",
+            "numberOfBytes": "32"
+          },
+          "t_array(t_uint256)49_storage": {
+            "label": "uint256[49]",
+            "numberOfBytes": "1568"
+          },
+          "t_array(t_uint256)50_storage": {
+            "label": "uint256[50]",
+            "numberOfBytes": "1600"
+          },
+          "t_bool": {
+            "label": "bool",
+            "numberOfBytes": "1"
+          },
+          "t_contract(IERC20)1231": {
+            "label": "contract IERC20",
+            "numberOfBytes": "20"
+          },
+          "t_mapping(t_address,t_struct(UserData)1724_storage)": {
+            "label": "mapping(address => struct LunaFarmPrivateSale.UserData)",
+            "numberOfBytes": "32"
+          },
+          "t_struct(UserData)1724_storage": {
+            "label": "struct LunaFarmPrivateSale.UserData",
+            "members": [
+              {
+                "label": "totalBUSDAmountContributed",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "tokenAmountReceived",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "1"
+              },
+              {
+                "label": "totalRewardAmount",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "2"
+              },
+              {
+                "label": "rewardAmountReceived",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "3"
+              }
+            ],
+            "numberOfBytes": "128"
+          },
+          "t_uint256": {
+            "label": "uint256",
+            "numberOfBytes": "32"
+          },
+          "t_uint8": {
+            "label": "uint8",
+            "numberOfBytes": "1"
+          }
+        }
+      }
+    }
+  }
+}
