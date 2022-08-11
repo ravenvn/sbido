@@ -6,7 +6,7 @@ import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
 import "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
 
-contract PrivateSale is OwnableUpgradeable {
+contract LunaFarmPrivateSale is OwnableUpgradeable {
     using SafeMath for uint256;
 
     IERC20 public token;
@@ -69,7 +69,7 @@ contract PrivateSale is OwnableUpgradeable {
         startReleaseTime = block.timestamp;
         instantRelease = block.timestamp + maxHoldingTime;
         releaseTokenTotalPercent = 0;
-        BUSD = IERC20(0xeD24FC36d5Ee211Ea25A80239Fb8C4Cfd80f12Ee);
+        BUSD = IERC20(0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56);
         __Ownable_init();
     }
     

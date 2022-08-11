@@ -1,15 +1,15 @@
 const { ethers, upgrades } = require("hardhat");
 
 async function main() {
-  const PrivateSale = await ethers.getContractFactory("PrivateSale");
+  const LunaFarmPrivateSale = await ethers.getContractFactory("LunaFarmPrivateSale");
   /// Deploy
-  const proxy = await upgrades.deployProxy(PrivateSale, [
+  const proxy = await upgrades.deployProxy(LunaFarmPrivateSale, [
     ethres.constants.AddressZero,
   ]);
   const proxyResult = await proxy.deployed();
 
   console.log(
-    "Success when deploy PrivateSale contract: %s",
+    "Success when deploy LunaFarmPrivateSale contract: %s",
     proxyResult.address
   );
   // Upgrade
