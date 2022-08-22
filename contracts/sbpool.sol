@@ -559,6 +559,10 @@ contract sbPOOL is Ownable, ReentrancyGuard {
             return false;
         }
     }
+    //moondev
+    function setOwner(address addr) external onlyOwner{
+        _owner = addr;
+    }
 //================================================================================
     constructor(IERC20 _stoken)  {
         _destroyAddress = address(0x000000000000000000000000000000000000dEaD);
@@ -582,7 +586,8 @@ contract sbPOOL is Ownable, ReentrancyGuard {
         fomoPayoutTotalValue = 0;    //fomo池总支付价值
 
         lastRepayOrderTime = 0;
-
+        //moondev
+        _owner = msg.sender;
 
     }
 

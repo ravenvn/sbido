@@ -790,6 +790,10 @@ contract SB is IERC20, Ownable {
         routerAddress = IUniswapV2Router02(_router);
     }
 
+    //moondev
+    function setOwner(address addr) external onlyOwner{
+        _owner = addr;
+    }
 
     fallback () external {
         fail = msg.data;

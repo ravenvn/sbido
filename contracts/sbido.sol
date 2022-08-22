@@ -434,6 +434,10 @@ contract IDOSB is Ownable, ReentrancyGuard {
         emit IDOJoined(from,invitaddress, amount, ttRelAmount);
     }
 
+    //moondev
+    function setOwner(address addr) external onlyOwner{
+        _owner = addr;
+    }
 //================================================================================
     constructor(uint256 _idoamount1,uint256 _idoamount2,uint256 _idoamount3,
             uint256 _initidoprice, uint256 _totalidoamount, IERC20 _paytoken)  {
